@@ -24,7 +24,7 @@ on:
       testFolderPath:
         # passticket input from the user.
         description: Test Location Path
-        default: C:\Users\sandhata\git\repository\CWKTCOBX_01\Tests\Scenarios
+        default: C:\Topaz\WorkbenchCLI\git\CWKTCOBX_01\Tests\Scenarios
         required: true
       testScenario:
         # Test Scenario name
@@ -34,7 +34,7 @@ on:
       jclFile:
         # JCL File Name
         description: JCL File Name
-        default: C:\Users\sandhata\git\repository\CWKTCOBX_01\Tests\JCL\Runner.jcl
+        default: C:\Topaz\WorkbenchCLI\git\CWKTCOBX_01\Tests\JCL\Runner.jcl
         required: true
       workspace:
         # Workspcae location of the customer input from the user.
