@@ -1,72 +1,36 @@
-# This is a basic workflow to help you get started with Actions for cli
-name: Topaz for Total Test
+# This is a basic workflow to help you get started with Actions
+
+name: Topaz for total test
 
 # Controls when the workflow will run
-on:  
-# Allows you to run this workflow manually from the Actions tab
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-   branches:
-       - main
-    inputs:
-      clipath:
-        # Host/IP adress input from users
-        description: CLI Execution path
-        default: C:\Topaz\WorkbenchCLI
-        required: true
-      hciconnection:
-        # Host/IP adress input from users
-        description: HCI Connection
-        default: "10.10.1.172"
-        required: true
-      port:
-        # passticket input from the user.
-        description: Port
-        default: "16196"
-        required: true
-      testFolderPath:
-        # passticket input from the user.
-        description: Test Location Path
-        default: C:\Topaz\WorkbenchCLI\git\CWKTCOBX_01\Tests\Scenarios
-        required: true
-      testScenario:
-        # Test Scenario name
-        description: Test Scenario Name
-        default: "CWKTCOBX_Scenario.testscenario"
-        required: true
-      jclFile:
-        # JCL File Name
-        description: JCL File Name
-        default: C:\Topaz\WorkbenchCLI\git\CWKTCOBX_01\Tests\JCL\Runner.jcl
-        required: true
-      workspace:
-        # Workspcae location of the customer input from the user.
-        description: CLI path
-        default: C:\Topaz\WorkbenchCLI\workspace
-        required: true        
-      repository_server:
-        # repository server input from the user.
-        description: Repository Server
-        default: "http://10.10.1.174:48226/"
-        required: false
-      userId:
-        # repository server input from the user.
-        description: HCI User ID
-        default: "ADCDS"
-        required: true
-        
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+     
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
     runs-on: self-hosted
-    env:
-     HCI_PASSWORD: ${{ secrets.HCI_PASSWORD }}
-    #runs-on: windows-latest
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - run: git config --global core.longpaths true     
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
       # Runs a single command using the runners shell
-      - run: echo "${{ secrets.HCI_PASSWORD }}"
       - name: Calling the CLI function
-        run: ${{ inputs.clipath }}\\TotalTestFTCLI.bat -host "${{ inputs.hciconnection }}" -port "${{ inputs.port }}" -u "${{ inputs.userId}}" -p "${{ secrets.HCI_PASSWORD }}" -file "${{ inputs.testFolderPath }}" --runner-jcl "${{inputs.jclFile}}" 
+        run: git config --global core.longpaths true 
+
+      # Runs a set of commands using the runners shell
+      - name: Calling the CLI function
+        run: echo "${{ secrets.HCI_PASSWORD }}"
+          echo Add other actions to build,
+          echo test, and deploy your project.
