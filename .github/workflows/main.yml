@@ -74,4 +74,4 @@ jobs:
       # Runs a single command using the runners shell
       - run: echo "${{ secrets.HCI_PASSWORD }}"
       - name: Calling the CLI function
-        run: ${{ inputs.clipath }} -host "${{ inputs.hciconnection }}" -port "${{ inputs.port }}" -u "${{ inputs.userId}}" -p "${{ secrets.HCI_PASSWORD }}" -file "${{ inputs.testFolderPath }}" --runner-jcl "${{inputs.jclFile}}"  
+    
