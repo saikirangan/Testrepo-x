@@ -1,0 +1,5 @@
+       01  PARMINFO.
+           03  PARM-LTH          PIC S9(4) COMP.
+           03  PARM-DATA          PIC X(5).
+           03  GRAND-TOTAL        PIC S9(7) COMP.
+           03  TOTAL-RECORD       PIC 999      VALUE 0.

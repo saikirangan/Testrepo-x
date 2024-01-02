@@ -1,0 +1,7 @@
+       01 WS-VARS.
+          05 WS-X    PIC 9(02) VALUE 00.
+          05 WS-Y    PIC 9(02) VALUE 00.
+          05 WS-Z    PIC 9(03).
+          05 WS-FLG  PIC X VALUE 'Y'.
+             88 WS-VALID   VALUE 'Y'.
+             88 WS-INVALID VALUE 'N'.
