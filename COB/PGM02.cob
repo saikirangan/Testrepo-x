@@ -11,4 +11,4 @@
            ACCEPT WS-Y.
            COMPUTE WS-Z = WS-X + WS-Y.                                  00060004
            DISPLAY 'SUM OF ' WS-X ' AND 'WS-Y ' IS:' WS-Z.              00070001
-           GOBACK.                                                      00080001
+           GOBACK                                                       00080001
