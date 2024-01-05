@@ -1,12 +1,21 @@
 name: code-pipeline-sync-local, generate and deploy
 
-
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  generate:
-    name: sync, build & deploy
-    runs-on: [self-hosted, ISPW]
+  trigger:
+    name: sync, build & deploy  
+    runs-on: self-hosted
+
+#on: [push]
+
+#jobs:
+ #generate:
+  #name: sync, build & deploy
+  #runs-on: [self-hosted, ISPW]
     #env:
       #Win_Topaz_Location: 'C:\Topaz\Workbench CLI'
     
@@ -62,7 +71,7 @@ jobs:
           
       - name: wait 30 second for generate to complete
         run: Start-Sleep -s 30
-        shell: powershell
+        #shell: powershell
       
       - name: deploy
         if: ${{ steps.sync.outputs.automaticBuildJson != '{}'}}
